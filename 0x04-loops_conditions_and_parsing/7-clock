@@ -8,7 +8,7 @@ do
     while [ $m -le 59 ]
     do
         echo "$m"
-        m=$(( $m + 1 ))
+        (( m++ ))
     done
-    h=$(( $h + 1))
+    (( h++ ))
 done
