@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # bash script to gives information about a file
 if [ -e holbertonschool ];
 then
