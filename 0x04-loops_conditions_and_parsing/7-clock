@@ -1,4 +1,5 @@
 #!/bin/bash
+# bash script to print hours and minutes
 h=0
 while [ $h -le 12 ]
 do

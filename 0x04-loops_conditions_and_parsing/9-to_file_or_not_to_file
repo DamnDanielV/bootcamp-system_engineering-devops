@@ -1,4 +1,5 @@
 #!/bin/bash
+# bash script to gives information about a file
 if [ -e holbertonschool ];
 then
     echo "holbertonschool file exists"

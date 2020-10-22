@@ -1,4 +1,5 @@
 #!/bin/bash
+# Bash script to display the content of tye current directory
 F=$(ls .)
 for file in $F
 do
