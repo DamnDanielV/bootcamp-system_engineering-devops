@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Install nginx web server
-apt-get -y update && apt-get -y install nginx
-echo "Holberton School" | sudo tee /srv/www/index.html
-echo -e "server {
+sudo apt-get -y update && sudo apt-get -y install nginx
+sudo echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo echo -e "server {
                 listen 80 default_server;
-                root /srv/www;
+                root /var/www/html;
                 index index.html index.htm;
 }" | sudo tee /etc/nginx/sites-available/www
-ln -sf /etc/nginx/sites-available/www /etc/nginx/sites-enabled/
-service nginx restart
+sudo ln -sf /etc/nginx/sites-available/www /etc/nginx/sites-enabled/
+sudo service nginx restart
