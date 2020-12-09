@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# script to connect to a server without typing a password
+Host *
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/holberton
