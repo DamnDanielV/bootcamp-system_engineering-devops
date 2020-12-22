@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header
+sudo apt-get -y update && sudo apt-get -y install nginx 
+sudo mkdir -p /srv/www
+echo "Holberton School" | sudo tee /srv/www/index.html 
+sudo rm -f /etc/nginx/sites-enabled/default 
+echo -e "
+server {
+	listen 80 default_server;
+	root /srv/www;
+	index index.html index.htm;
+	add_header X-Served-By \$hostname;	
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+}" | sudo tee /etc/nginx/sites-available/www 
+sudo ln -sf /etc/nginx/sites-available/www /etc/nginx/sites-enabled/ 
+sudo nginx -t && sudo service nginx restart
