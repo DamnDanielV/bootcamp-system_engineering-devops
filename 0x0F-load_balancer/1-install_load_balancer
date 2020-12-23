@@ -15,7 +15,7 @@ frontend http
 
 backend http_back
 	balance roundrobin
-	server 1821-web-01 34.74.16.58:80 check
+	server gc-1821-web-01-1608684341 34.74.16.58:80 check
 	server 1821-web-02 35.196.98.184:80 check
 " | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
