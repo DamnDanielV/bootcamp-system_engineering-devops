@@ -7,10 +7,15 @@ apt-get update
 apt-get install -y haproxy -t trusty-backports
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
 sed -i "6 i \\\nENABLED=1\n" /etc/default/haproxy
-sed -i "\$a\
-listen backend *:80\n\
-\tmode http\n\tbalance roundrobin\n\
-\tserver web-01 34.74.16.58:80 check\n\
-\tserver web-02 35.196.98.184:80 check\n" \
-/etc/haproxy/haproxy.cfg
-sudo service haproxy start
+sudo echo "
+frontend http
+      bind *:80
+      mode http
+	default_backend http_back
+
+backend http_back
+	balance roundrobin
+	server 1821-web-01 34.74.16.58:80 check
+	server 1821-web-02 35.196.98.184:80 check
+" | sudo tee -a /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
